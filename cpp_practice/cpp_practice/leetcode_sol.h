@@ -221,6 +221,15 @@ ListNode *removeNthFromEnd(ListNode *head, int n)
     }
 }
 
+
+
+/*
+ Problem 189
+ 
+ Rotate an array of n elements to the right by k steps.
+ For example, with n = 7 and k = 3, the array [1,2,3,4,5,6,7] is rotated to [5,6,7,1,2,3,4].
+*/
+
 void rotate(int nums[], int n, int k) {
     int *temp = new int[n];
     int new_pos;
@@ -233,7 +242,45 @@ void rotate(int nums[], int n, int k) {
         new_pos = (i+k)%n;
         nums[new_pos] = temp[i];
     }
-    
+
 }
 
+
+// problem 83
+ListNode *deleteDuplicates(ListNode *head) {
+    if (head == NULL)
+    {
+        return NULL;
+    }
+    if (head->next == NULL)
+    {
+        return head;
+    }
+    else {
+        ListNode *check, *curr;
+        curr = head;
+        check = curr->next;
+        while (check != NULL)
+        {
+            if (check->val == curr->val)
+            {
+                ListNode *temp = NULL;
+                temp = check;
+                curr->next = check->next;
+                check = curr->next;
+                delete temp;
+            }
+            else
+            {
+                curr = curr->next;
+                check = curr->next;
+            }
+        }
+        return head;
+    }
+}
+
+ListNode *mergeTwoLists(ListNode *l1, ListNode *l2) {
+    
+}
 #endif

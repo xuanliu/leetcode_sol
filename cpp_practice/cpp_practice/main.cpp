@@ -127,6 +127,28 @@ void add2num()
     print_list(sum);
 }
 
+
+
+/*
+ Problem 83: delete duplicated nodes from sorted linked list
+ 
+ Given a sorted linked list, delete all duplicates such that each element appear only once.
+ 
+ For example,
+ Given 1->1->2, return 1->2.
+ Given 1->1->2->3->3, return 1->2->3.
+*/
+void deleteDuplicatedNodes(){
+    node2 *l,*new_list;
+    int a[1] = {1};
+    l = NULL;
+    new_list = NULL;
+    l = gen_list2(l, a, 1);
+    print_list(l);
+    new_list = deleteDuplicates(l);
+    print_list(new_list);
+}
+
 int main(int argc, const char * argv[])
 {
     // generate 1-D array
@@ -219,6 +241,10 @@ int main(int argc, const char * argv[])
     
     // problem 19: delete nth node from the end
     delFromEnd();
+    
+    // problem 83: delete duplicated nodes from sorted list
+    deleteDuplicatedNodes();
+    
     return 0;
     
 

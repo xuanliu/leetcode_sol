@@ -149,6 +149,28 @@ void deleteDuplicatedNodes(){
     print_list(new_list);
 }
 
+/*
+ Problem 21: Merge two sorted list
+ Merge two sorted linked lists and return it as a new list. 
+ The new list should be made by splicing together the nodes of the first two lists.
+*/
+
+void merge2sortedlist(){
+    int a1[1] = {1};
+    int a2[1] = {2};
+    node2 *l1, *l2, *newl;
+    l1 = NULL;
+    l2 = NULL;
+    l1 = gen_list2(l1,a1,1);
+    l2 = gen_list2(l2,a2,1);
+    print_list(l1);
+    print_list(l2);
+    newl = mergeTwoLists(l1, l2);
+    print_list(newl);
+    
+}
+
+
 int main(int argc, const char * argv[])
 {
     // generate 1-D array
@@ -245,6 +267,8 @@ int main(int argc, const char * argv[])
     // problem 83: delete duplicated nodes from sorted list
     deleteDuplicatedNodes();
     
+    // problem : merge two sorted list
+    merge2sortedlist();
     return 0;
     
 

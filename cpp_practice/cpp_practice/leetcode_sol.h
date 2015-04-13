@@ -8,7 +8,8 @@
 
 #ifndef cpp_practice_leetcode_sol_h
 #define cpp_practice_leetcode_sol_h
-
+#include <stdio.h>      /* printf, scanf, puts, NULL */
+#include <stdlib.h>     /* srand, rand */
 
 /*
  4. You are given two linked lists representing two non-negative numbers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.
@@ -280,7 +281,96 @@ ListNode *deleteDuplicates(ListNode *head) {
     }
 }
 
+// Problem 21
+
 ListNode *mergeTwoLists(ListNode *l1, ListNode *l2) {
     
+    if (l1 == NULL && l2 == NULL){
+        return NULL;
+    }
+    else if (l1 == NULL){
+        return l2;
+    }
+    else if (l2 == NULL){
+        return l1;
+    }
+    else{
+        ListNode *l1curr, *l2curr, *new_list, *pre;
+        l1curr = l1;
+        l2curr = l2;
+        new_list = NULL;
+        ListNode *temp;
+        while (l1curr != NULL && l2curr != NULL){
+            if (l1curr->val > l2curr->val){
+                temp = new ListNode(l2curr->val);
+                if (new_list == NULL){
+                    new_list = temp;
+                    pre = new_list;
+                }
+                else{
+                    pre->next = temp;
+                    pre = pre->next;
+                }
+                l2curr = l2curr->next;
+            }
+            else if (l1curr->val < l2curr->val){
+                temp = new ListNode(l1curr->val);
+                if (new_list == NULL){
+                    new_list = temp;
+                    pre = new_list;
+                }
+                else{
+                    pre->next = temp;
+                    pre = pre->next;
+                }
+                l1curr = l1curr->next;
+            }
+            else {
+                temp = new ListNode(l1curr->val);
+                if (new_list == NULL){
+                    new_list = temp;
+                    pre = new_list;
+                }
+                else{
+                    pre->next = temp;
+                    pre = pre->next;
+                }
+                ListNode *temp2;
+                temp2 = new ListNode(l2curr->val);
+                pre->next = temp2;
+                pre = pre->next;
+                l2curr = l2curr->next;
+                l1curr = l1curr->next;
+                //delete temp2;
+            }
+            //delete temp;
+        }
+        if (l1curr == NULL && l2curr == NULL){
+            return new_list;
+        }
+        else if (l1curr != NULL){
+            while (l1curr != NULL){
+                ListNode *temp;
+                temp = new ListNode(l1curr->val);
+                pre->next = temp;
+                pre = pre->next;
+                //delete temp;
+                l1curr = l1curr->next;
+            }
+            return new_list;
+        }
+        else{
+            while (l2curr != NULL){
+                ListNode *temp;
+                temp = new ListNode(l2curr->val);
+                pre->next = temp;
+                pre = pre->next;
+                //delete temp;
+                l2curr = l2curr->next;
+                
+            }
+            return new_list;
+        }
+    }
 }
 #endif
